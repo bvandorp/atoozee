@@ -27,6 +27,8 @@ $children = $parentObject->getMany('Children',$criteria);
 
 //set to array
 foreach($children as $child){
+
+	//verdere data ophalen
 	if(!empty($sortbyTV)){
 		$title = $child->getTVValue($sortbyTV);
 	}else{
@@ -54,6 +56,7 @@ foreach($index_array as $letter=>$documents){
 	$ph_index .= $modx->getChunk($tplIndex,$indexarray);
 
 	$ph_listItems = '';
+	$ph_listItemsArray = array();
 	foreach($documents as $document){
 		$resource = $modx->getObject('modResource', $document);
 
@@ -73,8 +76,15 @@ foreach($index_array as $letter=>$documents){
 				$item_array[$tvname] = $tvvalue;
 			}
 		}
+		if(!empty($sortbyTV)){
+			$title = $resource->getTVValue($sortbyTV);
+		}else{
+			$title = $resource->get($sortby);
+		}
 
-		$ph_listItems .= $modx->getChunk($tplListItem,$item_array);
+		$ph_listItemsArray[$title] = $modx->getChunk($tplListItem,$item_array);
+		ksort($ph_listItemsArray);
+		$ph_listItems = implode('',$ph_listItemsArray);
 	}
 
 	$list_array = array(
