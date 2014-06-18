@@ -1,4 +1,6 @@
 <?php
+//[[atoozee? &parent=`17` &sortbyTV=`overview_show_how` &includeTVs=`overview_show_how`]]
+
 //define variables
 $parent = (!empty($parent) ? $parent : $modx->resource->get('id')); //parent to get children from
 $ignore = (!empty($ignore) ? $ignore : '');
