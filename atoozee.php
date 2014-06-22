@@ -6,7 +6,7 @@ $parent = (!empty($parent) ? $parent : $modx->resource->get('id')); //parent to 
 $ignore = (!empty($ignore) ? $ignore : '');
 $sortby = (!empty($sortby) ? $sortby : 'pagetitle');
 $sortbyTV = (!empty($sortbyTV) ? $sortbyTV : '');
-$sortdir = (!empty($sortdir) ? $sortdir : 'ASC');
+//$sortdir = (!empty($sortdir) ? $sortdir : 'ASC');
 $tplIndex = (!empty($tplIndex) ? $tplIndex : 'tplIndex');
 $tplList = (!empty($tplList) ? $tplList : 'tplList');
 $tplListItem = (!empty($tplListItem) ? $tplListItem : 'tplListItem');
@@ -24,7 +24,7 @@ $criteria->where(array(
    'published' => 1,
    'deleted' => 0
 ));
-//$criteria->sortby($sortby,$sortdir);
+
 $children = $parentObject->getMany('Children',$criteria);
 
 //set to array
